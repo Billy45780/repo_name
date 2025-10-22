@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация на курс программирования</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <header class="form-header">
+            <h1 class="form-title">🚀 Стань разработчиком</h1>
+            <p class="form-subtitle">Зарегистрируйся на интенсивный курс по программированию</p>
+        </header>
+
+        <form class="form-body" id="registrationForm" novalidate>
+            <!-- Личная информация -->
+            <fieldset>
+                <legend style="font-weight: 600; margin-bottom: 1rem; color: var(--gray-900);">Личная информация</legend>
+                
+                <div class="form-group">
+                    <label for="fullName" class="form-label required">Полное имя</label>
+                    <input type="text" id="fullName" class="form-input" name="fullName" placeholder="Иван Иванов" required minlength="2">
+                    <div class="error-message" id="fullNameError">Введите корректное имя (минимум 2 символа)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label required">Email</label>
+                    <input type="email" id="email" class="form-input" name="email" placeholder="ivan@example.com" required>
+                    <div class="error-message" id="emailError">Введите корректный email адрес</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label required">Телефон</label>
+                    <input type="tel" id="phone" class="form-input" name="phone" placeholder="+7 (999) 123-45-67" required pattern="^\+7\s?[\(]?\d{3}[\)]?\s?\d{3}[\-]?\d{2}[\-]?\d{2}$">
+                    <div class="error-message" id="phoneError">Введите телефон в формате +7 (999) 123-45-67</div>
+                </div>
+            </fieldset>
+
+            <!-- Безопасность -->
+            <fieldset>
+                <legend style="font-weight: 600; margin-bottom: 1rem; color: var(--gray-900);">Безопасность</legend>
+                
+                <div class="form-group password-group">
+                    <label for="password" class="form-label required">Пароль</label>
+                    <input type="password" id="password" class="form-input" name="password" placeholder="Создайте надежный пароль" required minlength="8">
+                    <button type="button" class="toggle-password" aria-label="Показать пароль">👁️</button>
+                    <div class="password-strength">
+                        <div class="strength-bar" id="passwordStrength"></div>
+                    </div>
+                    <div class="error-message" id="passwordError">Пароль должен содержать минимум 8 символов, включая буквы и цифры</div>
+                </div>
+
+                <div class="form-group password-group">
+                    <label for="confirmPassword" class="form-label required">Подтверждение пароля</label>
+                    <input type="password" id="confirmPassword" class="form-input" name="confirmPassword" placeholder="Повторите пароль" required>
+                    <button type="button" class="toggle-password" aria-label="Показать пароль">👁️</button>
+                    <div class="error-message" id="confirmPasswordError">Пароли не совпадают</div>
+                </div>
+            </fieldset>
+
+            <!-- Информация о курсе -->
+            <fieldset>
+                <legend style="font-weight: 600; margin-bottom: 1rem; color: var(--gray-900);">Информация о курсе</legend>
+                
+                <div class="form-group">
+                    <label class="form-label required">Выберите направление</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="course" value="frontend" class="radio-input" required>
+                            <span>Frontend разработка (HTML, CSS, JavaScript)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="course" value="backend" class="radio-input">
+                            <span>Backend разработка (Python, Node.js)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="course" value="mobile" class="radio-input">
+                            <span>Mobile разработка (React Native, Flutter)</span>
+                        </label>
+                    </div>
+                    <div class="error-message" id="courseError">Выберите направление обучения</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience" class="form-label">Опыт в программировании</label>
+                    <select id="experience" class="form-select" name="experience">
+                        <option value="">Выберите опыт</option>
+                        <option value="none">Новичок (без опыта)</option>
+                        <option value="beginner">Начальный уровень (до 1 года)</option>
+                        <option value="intermediate">Средний уровень (1-3 года)</option>
+                        <option value="advanced">Продвинутый уровень (3+ года)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Дополнительные технологии (выберите интересующие)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="technologies" value="react" class="checkbox-input">
+                            <span>React.js</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="technologies" value="vue" class="checkbox-input">
+                            <span>Vue.js</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="technologies" value="angular" class="checkbox-input">
+                            <span>Angular</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="technologies" value="database" class="checkbox-input">
+                            <span>Базы данных</span>
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Дополнительная информация -->
+            <fieldset>
+                <legend style="font-weight: 600; margin-bottom: 1rem; color: var(--gray-900);">Дополнительная информация</legend>
+                
+                <div class="form-group">
+                    <label for="birthDate" class="form-label">Дата рождения</label>
+                    <input type="date" id="birthDate" class="form-input" name="birthDate" max="2010-01-01">
+                    <div class="error-message" id="birthDateError">Минимальный возраст для регистрации - 14 лет</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments" class="form-label">Комментарии или пожелания</label>
+                    <textarea id="comments" class="form-textarea" name="comments" placeholder="Расскажите о ваших целях обучения..." rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="newsletter" class="checkbox-input" checked>
+                        <span>Получать уведомления о новых курсах и акциях</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label required">
+                        <input type="checkbox" name="agreement" class="checkbox-input" required>
+                        <span>Я соглашаюсь с условиями обработки персональных данных</span>
+                    </label>
+                    <div class="error-message" id="agreementError">Необходимо принять соглашение</div>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Зарегистрироваться на курс
+            </button>
+
+            <div class="success-message" id="successMessage">
+                ✅ Регистрация успешно завершена! Скоро мы свяжемся с вами.
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

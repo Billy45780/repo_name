@@ -1,0 +1,202 @@
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #06d6a0;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --error: #ef4444;
+
+    --dark-bg: #0f172a;
+    --dark-surface: #1e293b;
+    --light-text: #f8fafc;
+    --muted-text: #cbd5e1;
+
+    --radius: 12px;
+    --transition: all 0.3s ease;
+    --shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg), var(--dark-surface));
+    color: var(--light-text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Мягкая динамика фона */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(99,102,241,0.15), transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(6,214,160,0.1), transparent 60%);
+    animation: float 18s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Контейнер формы */
+.form-container {
+    background: rgba(30, 41, 59, 0.75);
+    backdrop-filter: blur(18px);
+    border: none; /* рамка убрана */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-width: 640px;
+    width: 100%;
+    overflow: hidden;
+    animation: appear 0.6s ease-out;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(25px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.form-header {
+    text-align: center;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(6,214,160,0.1));
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Убираем белую рамку fieldset */
+fieldset {
+    border: none; /* Убираем рамку */
+    padding: 0;
+    margin: 0;
+}
+
+/* Стили заголовка внутри fieldset */
+legend {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--light-text);
+}
+
+.form-body {
+    padding: 2.5rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--muted-text);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    padding: 1rem;
+    border-radius: var(--radius);
+    border: 2px solid rgba(255,255,255,0.1);
+    background: rgba(15,23,42,0.6);
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+    background: rgba(15,23,42,0.8);
+    outline: none;
+}
+
+/* Кнопка */
+.submit-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99,102,241,0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.success-message {
+    background: linear-gradient(135deg, var(--success), var(--secondary));
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    margin-top: 1rem;
+    display: none;
+}
+
+.success-message.show {
+    display: block;
+    animation: fadeUp 0.4s ease-out;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптив */
+@media (max-width: 640px) {
+    .form-body {
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.6rem;
+    }
+}
