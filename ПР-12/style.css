@@ -1,0 +1,480 @@
+/* Space Station Control Panel - Modern Dark Theme */
+:root {
+  --space-black: #0a0e17;
+  --space-dark: #121826;
+  --space-blue: #1a243d;
+  --space-accent: #00f3ff;
+  --space-accent-glow: rgba(0, 243, 255, 0.4);
+  --space-purple: #8a2be2;
+  --space-green: #00ff88;
+  --space-red: #ff2a6d;
+  --space-yellow: #ffd166;
+  --space-text: #e0f7ff;
+  --space-text-muted: #88a0b8;
+  --space-border: #2a3a5a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(26, 36, 61, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.6) 0%, transparent 50%),
+    linear-gradient(135deg, var(--space-black) 0%, var(--space-dark) 100%);
+  color: var(--space-text);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Звездный фон */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  z-index: -1;
+  animation: stars 60s linear infinite;
+}
+
+@keyframes stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+.console {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Заголовок */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, 
+    rgba(26, 36, 61, 0.9) 0%, 
+    rgba(42, 58, 90, 0.7) 100%);
+  border-radius: 16px;
+  border: 1px solid var(--space-border);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--space-accent), transparent);
+  animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--space-text) 0%, var(--space-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  text-shadow: 0 0 30px var(--space-accent-glow);
+}
+
+.subtitle {
+  color: var(--space-text-muted);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+/* Панели */
+.panel {
+  background: linear-gradient(135deg, 
+    rgba(26, 36, 61, 0.95) 0%, 
+    rgba(42, 58, 90, 0.85) 100%);
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  border: 1px solid var(--space-border);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.panel h2 {
+  color: var(--space-accent);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--space-border);
+  font-weight: 600;
+}
+
+/* Кнопки */
+.btn {
+  background: linear-gradient(135deg, var(--space-blue) 0%, var(--space-dark) 100%);
+  border: 1px solid var(--space-border);
+  color: var(--space-text);
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, var(--space-blue) 0%, #223055 100%);
+  border-color: var(--space-accent);
+  box-shadow: 0 0 20px var(--space-accent-glow);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn.small {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+/* Цветной бокс */
+.color-box {
+  height: 120px;
+  background: linear-gradient(135deg, var(--space-blue) 0%, var(--space-purple) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+  color: var(--space-text);
+  font-weight: 500;
+  border: 1px solid var(--space-border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.color-box:hover::before {
+  opacity: 1;
+}
+
+.color-box.hover {
+  background: linear-gradient(135deg, var(--space-red) 0%, #ff6b9c 100%);
+  box-shadow: 0 0 30px rgba(255, 42, 109, 0.4);
+}
+
+/* Вывод данных */
+.output {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(10, 14, 23, 0.6);
+  border-radius: 10px;
+  border: 1px solid var(--space-border);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--space-green);
+  min-height: 50px;
+  line-height: 1.5;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.output::before {
+  content: '>';
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: var(--space-accent);
+  font-weight: bold;
+}
+
+/* Списки */
+.item-list {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.item {
+  background: linear-gradient(135deg, var(--space-dark) 0%, var(--space-blue) 100%);
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--space-border);
+  color: var(--space-text);
+  font-size: 13px;
+  transition: all 0.3s ease;
+  position: relative;
+  min-width: 120px;
+}
+
+.item:hover {
+  border-color: var(--space-accent);
+  transform: translateY(-2px);
+}
+
+.item.selected {
+  background: linear-gradient(135deg, var(--space-blue) 0%, var(--space-purple) 100%);
+  border-color: var(--space-purple);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+.item .delete {
+  background: transparent;
+  border: none;
+  color: var(--space-red);
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.item .delete:hover {
+  color: #ff8ba7;
+  transform: scale(1.2);
+}
+
+/* Формы и инпуты */
+input, textarea {
+  background: rgba(10, 14, 23, 0.8);
+  border: 1px solid var(--space-border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--space-text);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--space-accent);
+  box-shadow: 0 0 15px var(--space-accent-glow);
+}
+
+/* Изображения */
+.image-wrap {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.image-wrap img {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--space-border);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.image-wrap img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Анимации */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(8px); }
+  75% { transform: translateX(-4px); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.pulse {
+  animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px var(--space-accent-glow); }
+  50% { box-shadow: 0 0 20px var(--space-accent-glow); }
+}
+
+.glow {
+  animation: glow 1s ease-in-out infinite;
+}
+
+/* Строка контролов */
+.controls-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+/* Футер */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  padding: 20px;
+  color: var(--space-text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--space-border);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .console {
+    padding: 15px;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .panel {
+    padding: 20px;
+  }
+  
+  .controls-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .item-list {
+    flex-direction: column;
+  }
+}
+
+/* Специальные стили для таймера */
+#timer-output {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--space-accent);
+  text-shadow: 0 0 10px var(--space-accent-glow);
+  font-family: 'Courier New', monospace;
+  margin: 20px 0;
+}
+
+/* Стили для ссылок */
+a {
+  color: var(--space-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px dotted var(--space-accent);
+}
+
+a:hover {
+  color: var(--space-green);
+  border-bottom-color: var(--space-green);
+}
+
+/* Стили для состояний загрузки */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--space-border);
+  border-top: 2px solid var(--space-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Улучшенные скроллбары */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--space-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--space-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--space-accent);
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Space Station — Event Handling Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="console">
+    <header>
+      <h1>Space Station — Control Deck</h1>
+      <p class="subtitle">Практическая работа №12 — JavaScript: обработка событий</p>
+    </header>
+
+    <section class="panel">
+      <h2>1. Базовые события</h2>
+      <button id="basic-btn" class="btn">Запустить реактор</button>
+      <div id="basic-output" class="output">Нажмите кнопку, чтобы увидеть данные события</div>
+
+      <div id="color-box" class="color-box">Move mouse here</div>
+      <div id="mouse-output" class="output">Координаты мыши: —</div>
+    </section>
+
+    <section class="panel">
+      <h2>2. Клавиатура</h2>
+      <input id="key-input" placeholder="Фокус и нажимайте клавиши" />
+      <div id="key-output" class="output">Информация о клавише: —</div>
+    </section>
+
+    <section class="panel">
+      <h2>3. Делегирование</h2>
+      <div class="controls-row">
+        <button id="add-item-btn" class="btn small">Добавить модуль</button>
+      </div>
+      <ul id="item-list" class="item-list">
+        <li class="item" data-id="1">Модуль 1 <button class="delete">✖</button></li>
+        <li class="item" data-id="2">Модуль 2 <button class="delete">✖</button></li>
+        <li class="item" data-id="3">Модуль 3 <button class="delete">✖</button></li>
+      </ul>
+      <div id="delegation-output" class="output">Выбраны: —</div>
+    </section>
+
+    <section class="panel">
+      <h2>4. Предотвращение поведения</h2>
+      <a id="prevent-link" href="https://example.com" target="_blank">Опасная ссылка (кликни меня)</a>
+      <form id="prevent-form">
+        <input id="name-input" name="name" placeholder="Введите имя экипажа" />
+        <button type="submit" class="btn small">Отправить</button>
+      </form>
+      <div id="prevention-output" class="output">Логи: —</div>
+    </section>
+
+    <section class="panel">
+      <h2>5. Кастомные события</h2>
+      <button id="trigger-custom" class="btn">Запустить customAction</button>
+      <button id="multiple-listeners" class="btn small">Добавить мн. слушателей</button>
+      <div id="custom-output" class="output">Custom: —</div>
+    </section>
+
+    <section class="panel">
+      <h2>6. Загрузка изображений</h2>
+      <button id="load-image" class="btn small">Загрузить фото планеты</button>
+      <button id="load-error" class="btn small">Симулировать ошибку</button>
+      <div id="loading-output" class="output">Статус: —</div>
+      <div id="image-wrap" class="image-wrap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>7. Таймер и оптимизация</h2>
+      <div class="controls-row">
+        <button id="start-timer" class="btn">Запустить таймер</button>
+        <button id="stop-timer" class="btn">Остановить</button>
+      </div>
+      <div id="timer-output" class="output">00:00</div>
+      <div class="controls-row">
+        <button id="debounce-btn" class="btn small">Тест debounce</button>
+        <button id="throttle-btn" class="btn small">Тест throttle</button>
+      </div>
+      <div id="async-output" class="output">Async logs: —</div>
+    </section>
+
+    <footer>
+      <small>Готово — тема: космическая станция. Код в файле events-tasks.js.</small>
+    </footer>
+  </main>
+
+  <script src="event-tasks.js"></script>
+  <script src="event-tests.js" defer></script>
+</body>
+</html>
+
+
