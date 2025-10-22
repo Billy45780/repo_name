@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Умный планировщик задач</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 Умный планировщик</h1>
+            <p>Организуйте свои задачи эффективно</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Статистика -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <h3>Всего задач</h3>
+                    <span id="total-tasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Выполнено</h3>
+                    <span id="completed-tasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>В процессе</h3>
+                    <span id="active-tasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Приоритет</h3>
+                    <span id="priority-tasks">0</span>
+                </div>
+            </section>
+
+            <!-- Форма добавления задачи -->
+            <section class="add-task-section">
+                <h2>Добавить новую задачу</h2>
+                <form id="task-form" class="task-form">
+                    <div class="form-group">
+                        <input type="text" id="task-title" placeholder="Название задачи" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea id="task-description" placeholder="Описание задачи"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select id="task-priority">
+                                <option value="low">Низкий приоритет</option>
+                                <option value="medium" selected>Средний приоритет</option>
+                                <option value="high">Высокий приоритет</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="task-deadline" />
+                        </div>
+                        <div class="form-group">
+                            <select id="task-category">
+                                <option value="work">Работа</option>
+                                <option value="personal">Личное</option>
+                                <option value="study">Учеба</option>
+                                <option value="health">Здоровье</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Добавить задачу</button>
+                </form>
+            </section>
+
+            <!-- Фильтры и поиск -->
+            <section class="filters-section">
+                <div class="search-box">
+                    <input type="text" id="task-search" placeholder="Поиск задач..." />
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="active">Активные</button>
+                    <button class="filter-btn" data-filter="completed">Выполненные</button>
+                    <button class="filter-btn" data-filter="high">Высокий приоритет</button>
+                </div>
+
+                <div class="sort-options">
+                    <select id="sort-tasks">
+                        <option value="newest">Сначала новые</option>
+                        <option value="oldest">Сначала старые</option>
+                        <option value="priority">По приоритету</option>
+                        <option value="deadline">По сроку</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Список задач -->
+            <section class="tasks-section">
+                <h2>Мои задачи</h2>
+                <div id="tasks-container" class="tasks-container">
+                    <!-- Тут будут задачи -->
+                </div>
+            </section>
+
+            <!-- Инструменты -->
+            <section class="tools-section">
+                <button id="clear-completed" class="btn-secondary">Очистить выполненные</button>
+                <button id="export-tasks" class="btn-secondary">Экспорт задач</button>
+                <button id="import-tasks" class="btn-secondary">Импорт задач</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- порядок подключение скриптов: алгоритмы -> утилиты -> работа с DOM -> тесты -->
+    <script src="algorithms.js"></script>
+    <script src="functions.js"></script>
+    <script src="dom-tasks.js"></script>
+    <script src="tests.js"></script>
+</body>
+</html>
