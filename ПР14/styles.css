@@ -1,0 +1,71 @@
+:root{
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --muted: #718096;
+    --accent: #667eea;
+    --danger: #e53e3e;
+}
+
+*{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+
+body{
+    margin:0;
+    padding:20px;
+    background:var(--bg);
+    color:#2d3748;
+}
+
+.container{max-width:980px;margin:0 auto;}
+
+header{margin-bottom:18px}
+h1{margin:0 0 6px 0;font-size:22px}
+h2{font-size:16px;margin:14px 0}
+
+.section{
+    background:var(--card);
+    padding:14px;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(11,20,40,0.04);
+    margin-bottom:12px;
+    border-left:4px solid rgba(102,126,234,0.15);
+}
+
+.button-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+
+.btn{
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid #e2e8f0;
+    background:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.output{
+    background:#f8fafc;
+    border:1px dashed #e6eefb;
+    padding:12px;
+    border-radius:8px;
+    min-height:36px;
+    white-space:pre-wrap;
+    margin-top:8px;
+}
+
+.cards-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:10px}
+
+.user-card{background:white;padding:10px;border-radius:8px;border:1px solid #eef2f7}
+
+.loading::before{content:"⏳ ";}
+
+.success{color:green;font-weight:600}
+.error{color:var(--danger);font-weight:600}
+
+.header-list{list-style:none;padding:0;margin:0}
+.header-item{padding:8px;background:#fff;border:1px solid #eef2f7;border-radius:6px;margin-bottom:6px;font-family:monospace;font-size:13px}
+
+.image-preview{max-width:300px;border-radius:8px;margin-top:12px;box-shadow:0 6px 14px rgba(0,0,0,0.08)}
+.progress-bar{height:10px;background:#edf2f7;border-radius:6px;margin-top:10px;overflow:hidden}
+.progress-fill{height:100%;width:0%;transition:width 200ms ease}
+.abort-btn{background:linear-gradient(135deg,#e53e3e,#c53030);color:white;border:none;padding:6px 10px;border-radius:6px}
+.search-results{max-height:260px;overflow:auto}
+.search-item{padding:10px;border:1px solid #eef2f7;border-radius:6px;margin-bottom:8px;background:white}
